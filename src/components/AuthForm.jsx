@@ -31,7 +31,7 @@ const AuthForm = ({ title, fields, onSubmit, error, buttonText }) => {
               name={field.name}
               placeholder={field.label}
               onChange={handleChange}
-              required
+              
             />
           </div>
         </div>
