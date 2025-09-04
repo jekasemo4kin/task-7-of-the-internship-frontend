@@ -43,9 +43,10 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  const loginWithToken = (oauthToken) => {
+  const loginWithToken = async (oauthToken) => {
     setToken(oauthToken);
     localStorage.setItem('token', oauthToken);
+    await fetchUser(oauthToken);
   };
 
   const value = {

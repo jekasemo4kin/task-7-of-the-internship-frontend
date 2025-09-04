@@ -6,7 +6,7 @@ import { validateCustomId } from '../utils/validation';
 
 function AddItemForm({ inventoryId, onAddItem, onCancel, inventory }) {
     const customFields = inventory?.customFields || [];
-    const initialFormData = (customFields).reduce((acc, field) => {
+    const initialFormData = customFields.reduce((acc, field) => {
         if (field.type === 'BOOLEAN') {
             acc[field.name] = false;
         } else {
@@ -47,7 +47,7 @@ function AddItemForm({ inventoryId, onAddItem, onCancel, inventory }) {
         setError(null);
         setValidationError('');
 
-        if (inventory?.customIdConfig?.length > 0 && customIdValue){
+        if (inventory?.customIdConfig && customIdValue) {
             const isValid = validateCustomId(customIdValue, inventory.customIdConfig);
             if (!isValid) {
                 setValidationError('Custom ID does not match the required format.');
