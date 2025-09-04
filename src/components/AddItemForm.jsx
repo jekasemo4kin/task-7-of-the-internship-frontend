@@ -47,7 +47,7 @@ function AddItemForm({ inventoryId, onAddItem, onCancel, inventory }) {
         setError(null);
         setValidationError('');
 
-        if (inventory?.customIdConfig && customIdValue) {
+        if (inventory?.customIdConfig?.length > 0 && customIdValue){
             const isValid = validateCustomId(customIdValue, inventory.customIdConfig);
             if (!isValid) {
                 setValidationError('Custom ID does not match the required format.');
